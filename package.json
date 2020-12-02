@@ -1,0 +1,25 @@
+{
+  "name": "vanilla",
+  "version": "0.1.0",
+  "description": "Discord bot di Italia JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "keywords": [
+    "discord",
+    "bot"
+  ],
+  "author": "Maurizio Mangione",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.14.0",
+    "nodemon": "^2.0.6"
+  }
+}
