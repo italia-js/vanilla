@@ -17,10 +17,10 @@
   "license": "MIT",
   "dependencies": {
     "discord.js": "^12.5.1",
+    "discord.js-commando": "github:discordjs/Commando",
     "dotenv": "^8.2.0"
   },
   "devDependencies": {
-    "discord.js-commando": "github:discordjs/Commando",
     "eslint": "^7.14.0",
     "nodemon": "^2.0.6"
   }
