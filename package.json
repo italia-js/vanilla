@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Discord bot di Italia JS",
   "main": "index.js",
+  "repository": "git@github.com:italia-js/vanilla.git",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node .",
