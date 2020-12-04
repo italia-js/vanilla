@@ -18,7 +18,7 @@ client.once('ready', () => {
 });
 
 client.on('message', (message) => {
-  if(message.mentions.users.first().username === 'Vanilla') {
+  if(message.mentions.users.first() && message.mentions.users.first().username === 'Vanilla') {
     message.reply('Il prefisso per i comandi è `js`. Prova `jshelp` 😉');
   }
 })
