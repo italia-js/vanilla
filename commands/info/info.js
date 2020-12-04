@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js');
 const Commando = require('discord.js-commando');
 
 module.exports = class InfoCommand extends Commando.Command {
@@ -9,7 +10,15 @@ module.exports = class InfoCommand extends Commando.Command {
       description: 'Restituisce delle informazioni sul server'
     })
   }
-  async run(message) {
-    message.channel.send(`Nome: ${message.guild.name}\nMembri: ${message.guild.memberCount}`);
+
+  async run (message) {
+    const embed = new MessageEmbed()
+      .setColor('#ffe000')
+      .setTitle(message.guild.name)
+      .addFields(
+        {name: 'Totale membri:', value: message.guild.memberCount}
+      )
+
+    message.channel.send(embed);
   }
 }

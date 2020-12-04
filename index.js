@@ -12,7 +12,7 @@ client.once('ready', () => {
   console.log(`${client.user.username} has logged in`);
   client.registry
     .registerGroups([
-      'info', 'commands providing information'
+      'info', 'commands providing informations'
     ])
     .registerCommandsIn(path.join(__dirname, 'commands'));
 });
