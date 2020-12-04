@@ -17,4 +17,12 @@ client.once('ready', () => {
     .registerCommandsIn(path.join(__dirname, 'commands'));
 });
 
+client.on('message', (message) => {
+  if(message.mentions.users.first().username === 'Vanilla') {
+    message.reply('Il prefisso per i comandi è `js`. Prova `jshelp` 😉');
+  }
+})
+
+client.on('error', console.error);
+
 client.login(process.env.ITALIAJS_BOT_TOKEN);
