@@ -10,6 +10,14 @@ const client = new Commando.CommandoClient({
 
 client.once('ready', () => {
   console.log(`${client.user.username} has logged in`);
+
+  client.user.setPresence({
+    activity: {
+      name: 'without frameworks'
+    },
+    status: 'online'
+  });
+
   client.registry
     .registerGroups([
       'info', 'commands providing informations'
