@@ -21,7 +21,8 @@ client.once('ready', () => {
   client.registry
     .registerGroups([
       ['info', 'commands providing informations'],
-      ['giveaways', 'commands providing giveaway functions']
+      ['giveaways', 'commands providing giveaway functions'],
+      ['voting', 'commands for polls, starboards etc']
     ])
     .registerCommandsIn(path.join(__dirname, 'commands'));
 });
