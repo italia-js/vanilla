@@ -20,7 +20,8 @@ client.once('ready', () => {
 
   client.registry
     .registerGroups([
-      'info', 'commands providing informations'
+      ['info', 'commands providing informations'],
+      ['giveaways', 'commands providing giveaway functions']
     ])
     .registerCommandsIn(path.join(__dirname, 'commands'));
 });
