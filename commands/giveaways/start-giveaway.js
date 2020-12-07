@@ -35,8 +35,8 @@ module.exports = class StartGiveawayCommand extends Commando.Command {
         const humans = participants.filter(participant => !participant.bot);
 
         if(humans.length) {
-          const winner = humans[Math.floor(Math.random() * humans.length)].username;
-          message.channel.send(`🎉 **Il vincitore del ${embedTitle} è ${winner}** 🎉`);
+          const winnerId = humans[Math.floor(Math.random() * humans.length)].id;
+          message.channel.send(`🎉 **Il vincitore del ${embedTitle} è <@${winnerId}>** 🎉`);
         } else {
           message.channel.send(`😕 **Non ci sono vincitori per il ${embedTitle} perché nessuno ha partecipato all'estrazione (o forse ho un bug 🤔)**`);
         }
