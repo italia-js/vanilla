@@ -43,7 +43,7 @@ module.exports = class StartGiveawayCommand extends Commando.Command {
     const embedURL = 'https://www.jetbrains.com/store/redeem/';
     const embedThumbnail = 'https://upload.picpaste.me/images/2020/12/06/jetbrains.th.png';
     const embedDescription = `**Free Personal Subscription \n100% DISCOUNT CODE** \n\nAppCode, CLion, DataGrip, GoLand, IntelliJ IDEA Ultimate, PhpStorm, PyCharm, ReSharper, ReSharper C++, Rider, RubyMine, WebStorm, o dotUltimate \n\n\n`;
-    const cta = `👇 clicca per partecipare all'estrazione. **(termina alle ${format(addMilliseconds(new Date(), time), 'kk:mm')})**`;
+    const cta = `👇 clicca per partecipare all'estrazione. **(termina alle ${format(addMilliseconds(new Date(), time), 'kk:mm', { timeZone: 'Europe/Rome' })})**`;
     const ended = '**🛑 Il giveaway è terminato!** 🛑';
 
     const giveawayStarted = new MessageEmbed()
