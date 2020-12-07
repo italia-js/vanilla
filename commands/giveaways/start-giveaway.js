@@ -18,6 +18,7 @@ module.exports = class StartGiveawayCommand extends Commando.Command {
       message.reply('Devi passare un numero come parametro es. `jsga 1`');
       return
     }
+    message.delete();
     const time = args * 60000;
 
     const endGiveaway = (msg) => {
