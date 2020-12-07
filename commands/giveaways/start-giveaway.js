@@ -13,8 +13,8 @@ module.exports = class StartGiveawayCommand extends Commando.Command {
       userPermissions: ['ADMINISTRATOR']
     })
   }
-  async run(message, args = 1) {
-    if(isNaN(args)) {
+  async run(message, args) {
+    if(isNaN(args) || !args) {
       message.reply('Devi passare un numero come parametro es. `jsga 1`');
       return
     }
@@ -27,22 +27,39 @@ module.exports = class StartGiveawayCommand extends Commando.Command {
 
         if(humans.length) {
           const winner = humans[Math.floor(Math.random() * humans.length)].username;
-          message.channel.send(`🎉 Il vincitore è ${winner} 🎉`);
+          message.channel.send(`🎉 **Il vincitore del ${embedTitle} è ${winner}** 🎉`);
         } else {
-          message.channel.send(`❌ Non ci sono vincitori perché nessuno ha partecipato all'estrazione (o forse ho un bug 🤔)`);
+          message.channel.send(`😕 **Non ci sono vincitori per il ${embedTitle} perché nessuno ha partecipato all'estrazione (o forse ho un bug 🤔)**`);
         }
+
+        msg.edit(giveawayEnded);
 
       }, time)
     }
 
-    const embed = new MessageEmbed()
-      .setColor('#ffe000')
-      .setTitle('Jetbrains giveaway')
-      .setURL('https://www.jetbrains.com/store/redeem/')
-      .setThumbnail('https://upload.picpaste.me/images/2020/12/06/jetbrains.th.png')
-      .setDescription(`**Free Personal Subscription \n100% DISCOUNT CODE** \n\nAppCode, CLion, DataGrip, GoLand, IntelliJ IDEA Ultimate, PhpStorm, PyCharm, ReSharper, ReSharper C++, Rider, RubyMine, WebStorm, o dotUltimate \n\n\n👇 clicca per partecipare all'estrazione. **(termina alle ${format(addMilliseconds(new Date(), time), 'kk:mm')})**`)
+    const embedColor = '#ffe000';
+    const embedTitle = 'Jetbrains giveaway';
+    const embedURL = 'https://www.jetbrains.com/store/redeem/';
+    const embedThumbnail = 'https://upload.picpaste.me/images/2020/12/06/jetbrains.th.png';
+    const embedDescription = `**Free Personal Subscription \n100% DISCOUNT CODE** \n\nAppCode, CLion, DataGrip, GoLand, IntelliJ IDEA Ultimate, PhpStorm, PyCharm, ReSharper, ReSharper C++, Rider, RubyMine, WebStorm, o dotUltimate \n\n\n`;
+    const cta = `👇 clicca per partecipare all'estrazione. **(termina alle ${format(addMilliseconds(new Date(), time), 'kk:mm')})**`;
+    const ended = '**🛑 Il giveaway è terminato!** 🛑';
 
-    const msg = await message.channel.send(embed);
+    const giveawayStarted = new MessageEmbed()
+      .setColor(embedColor)
+      .setTitle(embedTitle)
+      .setURL(embedURL)
+      .setThumbnail(embedThumbnail)
+      .setDescription(embedDescription + cta);
+
+    const giveawayEnded = new MessageEmbed()
+      .setColor(embedColor)
+      .setTitle(embedTitle)
+      .setURL(embedURL)
+      .setThumbnail(embedThumbnail)
+      .setDescription(embedDescription + ended);
+
+    const msg = await message.channel.send(giveawayStarted);
     await msg.react('🎁');
     endGiveaway(msg);
   }
