@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const Commando = require('discord.js-commando');
-const { addMilliseconds, format } = require('date-fns')
+const addMilliseconds = require('date-fns/addMilliseconds')
 
 module.exports = class StartGiveawayCommand extends Commando.Command {
   constructor(client) {
@@ -20,6 +20,14 @@ module.exports = class StartGiveawayCommand extends Commando.Command {
     }
     message.delete();
     const time = args * 60000;
+    const timezoneOptions = {
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: false,
+      timeZone: 'Europe/Rome'
+    };
+    const endingTime = new Intl.DateTimeFormat('it-IT', timezoneOptions)
+      .format(addMilliseconds(new Date(), time));
 
     const endGiveaway = (msg) => {
       setTimeout(() => {
@@ -43,7 +51,7 @@ module.exports = class StartGiveawayCommand extends Commando.Command {
     const embedURL = 'https://www.jetbrains.com/store/redeem/';
     const embedThumbnail = 'https://upload.picpaste.me/images/2020/12/06/jetbrains.th.png';
     const embedDescription = `**Free Personal Subscription \n100% DISCOUNT CODE** \n\nAppCode, CLion, DataGrip, GoLand, IntelliJ IDEA Ultimate, PhpStorm, PyCharm, ReSharper, ReSharper C++, Rider, RubyMine, WebStorm, o dotUltimate \n\n\n`;
-    const cta = `👇 clicca per partecipare all'estrazione. **(termina alle ${format(addMilliseconds(new Date(), time), 'kk:mm', { timezone: 'Europe/Rome' })})**`;
+    const cta = `👇 clicca per partecipare all'estrazione. **(termina alle ${endingTime})**`;
     const ended = '**🛑 Il giveaway è terminato!** 🛑';
 
     const giveawayStarted = new MessageEmbed()
