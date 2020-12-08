@@ -1,14 +1,14 @@
 const { MessageEmbed } = require('discord.js');
 const Commando = require('discord.js-commando');
 
-module.exports = class SuggestionsCommand extends Commando.Command {
+module.exports = class SuggestCommand extends Commando.Command {
   constructor(client) {
     super(client, {
       name: 'suggest',
       group: 'voting',
       memberName: 'suggest',
       aliases: ['plz'],
-      description: 'Crea un suggerimento che può essere votato dagli utenti'
+      description: 'Pubblica un messaggio con un\'idea o un suggerimento che può essere votato dagli utenti'
     })
   }
 
@@ -23,9 +23,9 @@ module.exports = class SuggestionsCommand extends Commando.Command {
       .setColor('#ffe000')
       .setAuthor(message.author.username, message.author.avatarURL())
       .setDescription(args)
+      .setFooter('💡 Stato: in valutazione')
 
     message.delete()
-      .catch(console.error);
 
     const msg = await message.channel.send(embed);
     await msg.react('👍')
