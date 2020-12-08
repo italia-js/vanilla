@@ -4,7 +4,7 @@ const { prefix } = require('./config.json');
 const Commando = require('discord.js-commando');
 
 const client = new Commando.CommandoClient({
-  owner: '458989281126645771',
+  owner: process.env.OWNER_ID,
   commandPrefix: prefix
 });
 
