@@ -9,7 +9,8 @@ module.exports = class SuggestionStatusCommand extends Commando.Command {
       memberName: 'suggeststatus',
       aliases: ['plzstatus'],
       argsType: 'multiple',
-      description: 'Cambia lo stato ad un suggerimento'
+      description: 'Cambia lo stato ad un suggerimento',
+      userPermissions: ['ADMINISTRATOR']
     })
   }
 
