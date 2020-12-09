@@ -1,6 +1,6 @@
 require('dotenv').config();
 const path = require('path');
-const { prefix } = require('./config.json');
+const { prefix, suggestionChannel } = require('./config.json');
 const Commando = require('discord.js-commando');
 
 const client = new Commando.CommandoClient({
@@ -30,6 +30,12 @@ client.once('ready', () => {
 client.on('message', (message) => {
   if(message.mentions.users.first() && message.mentions.users.first().username === 'Vanilla') {
     message.reply('Il prefisso per i comandi è `js`. Prova `jshelp` 😉');
+  }
+
+  if (message.channel.name == suggestionChannel && !message.author.bot) {
+    if (!(message.content.startsWith('jssuggest') || message.content.startsWith('jsplz'))) {
+      message.delete();
+    }
   }
 })
 
