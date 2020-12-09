@@ -40,10 +40,16 @@ Here's a walkthrough:
 ![discord dashboard](./img/discord-dashboard.jpg)
 
 1. Specify a name for your application (e.g. VanillaDev) and click _Create_.
-![discord new app](./img/discord-new-app.jpg)
+![discord new app](./img/discord-new-app.jpg)  
 
-1. This is how your app overview looks like.
+1. This is how your app overview looks like, **do not share client secret** under any circumstance.
 ![discord app overview](./img/discord-app-overview.jpg)
+
+1. Navigate to the _Bot_ section, then click _Add bot_.
+![discord app add bot](./img/discord-app-add-bot.jpg)
+
+1. This is how your bot overview looks like, **do not share token** under any circumstance.
+![discord app bot overview](./img/discord-app-bot-overview.jpg)
 
 
 
