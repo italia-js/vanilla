@@ -84,16 +84,6 @@ For local development you need to provide your bot token as follows:
 ITALIAJS_BOT_TOKEN=PASTE_HERE_YOUR_TOKEN
 ```
 
-## Running your bot
-
-To run your bot for development:
-
-1. Open a terminal.
-
-1. Navigate to the folder where you cloned this repository.
-
-1. Execute `npm run dev`.
-
 ## Discord server creation
 
 You need a Discord server to test your bot. To create one follow these steps:
@@ -130,6 +120,40 @@ Here's a walkthrough:
 1. Paste the Client ID you copied in the proper field.
 
 1. Click the link.
+
+1. In the new page you'll be prompted to login to Discord.
+
+1. Select via dropdown the server you want to add your bot to and click *Continue*.  
+   ![discord bot add to server](./img/discord-bot-add-to-server.jpg)
+
+1. You'll see a summary of the permissions, click *Authorize*.  
+   ![discord bot authorize](./img/discord-bot-authorize.jpg)
+
+1. Complete the reCaptcha to proceed.
+
+1. You'll be shown a success message.  
+   ![discord bot authorize success](./img/discord-bot-authorize-success.jpg)
+
+
+Checking your server on Discord client your bot appears now as an offline user.
+
+It's time to bring your bot online.
+
+## Bringing your bot online
+
+To bring your bot online for development:
+
+1. Open a terminal.
+
+1. Navigate to the folder where you cloned this repository.
+
+1. Execute `npm run dev`.
+
+Your bot appears now as an online user and you can interact with it.
+
+Congratulations!
+
+
 
 
 
