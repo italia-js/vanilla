@@ -56,7 +56,7 @@ Here's a walkthrough to get up and running with Discord:
 
 For further information please refer to the [official Discord documentation](https://discord.com/developers/docs/intro).
 
-## Bot token
+## Getting your bot token
 
 For local development you need to provide your bot token as follows:
 
@@ -96,7 +96,7 @@ To run your bot for development:
 
 ## Discord server creation
 
-To create a Discord server follow these steps:
+You need a Discord server to test your bot. To create one follow these steps:
 
 1. Open your Discord client.
 
@@ -105,8 +105,36 @@ To create a Discord server follow these steps:
 1. Click the option *Create My Own*.  
    ![discord create a server](./img/discord-create-a-server.jpg)
 
-1. Customize your server adding a name and optionally an avatar.  
+1. Customize your server adding a name and optionally an icon.  
    ![discord customize your server](./img/discord-customize-your-server.jpg)
+
+## Bot invitation
+
+A Discord bot is like a special user that needs to be invited to your server with a specific set of permissions, depending on the bot functionalities.
+
+Here's a walkthrough:
+
+1. Open your browser.
+
+1. Navigate to your dashboard on [Discord Developer Portal](https://discord.com/developers/applications/).
+
+1. Select the application you created.
+
+1. Navigate to the section *General Information*.
+
+1. Click *Copy* underneath *CLIENT ID*.
+
+1. Navigate to [Discord Permissions Calculator](https://discordapi.com/permissions.html#388208), to facilitate this link has already been set with the correct permissions for this project.  
+   ![discord bot permissions](./img/discord-bot-permissions.jpg)
+
+1. Paste the Client ID you copied in the proper field.
+
+1. Click the link.
+
+
+
+
+
 
 
 
