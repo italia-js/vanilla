@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const Commando = require('discord.js-commando');
+const { suggestionChannel } = require('../../config.json');
 
 module.exports = class SuggestCommand extends Commando.Command {
   constructor(client) {
@@ -13,6 +14,13 @@ module.exports = class SuggestCommand extends Commando.Command {
   }
 
   async run (message, args) {
+    if(message.channel.name !== suggestionChannel) {
+      const channelId = message.guild.channels.cache.find(channel => channel.name === suggestionChannel);
+      message.channel
+        .send(`Questo comando è utilizzabile solo nel canale ${channelId}`);
+      return
+    }
+
     if(!args) {
       const cmdError = await message.channel
         .send('Utilizzo: `jssuggest <il mio suggerimento>`');

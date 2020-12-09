@@ -1,3 +1,4 @@
 {
-  "prefix": "js"
+  "prefix": "js",
+  "suggestionChannel": "suggerimenti"
 }
