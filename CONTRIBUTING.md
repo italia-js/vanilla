@@ -17,18 +17,22 @@ To contribute to the code you'll need to:
 - Setup your local machine
 - Create for free a Discord developer account
 - Get a token for your development bot
+- Create a Discord server, for testing purposes
+- Invite the bot to your server
 
 All of this will be explained step-by-step.
 
-### Local machine setup
+## Local machine setup
 
 If you made this far you most likely know the drill:
 
 1. Install the latest [Node.js](https://nodejs.org/en/) LTS (using [nvm](https://github.com/nvm-sh/nvm) or similar library is highly recommended).
+
 1. Clone this repository
+
 1. Execute `npm install`
 
-### Discord developer account (free)
+## Discord developer account (free)
 
 Here's a walkthrough to get up and running with Discord:
 
@@ -51,3 +55,59 @@ Here's a walkthrough to get up and running with Discord:
    ![discord app bot overview](./img/discord-app-bot-overview.jpg)
 
 For further information please refer to the [official Discord documentation](https://discord.com/developers/docs/intro).
+
+## Bot token
+
+For local development you need to provide your bot token as follows:
+
+1. Open your browser.
+
+1. Navigate to your dashboard on [Discord Developer Portal](https://discord.com/developers/applications/).
+
+1. Select the application you created.
+
+1. Navigate to the *Bot* section.
+
+1. Click *Copy* underneath *TOKEN*.  
+   ![discord bot copy token](./img/discord-bot-copy-token.jpg)
+
+1. Open your IDE or editor of choice (e.g. [Visual Studio Code](https://code.visualstudio.com/)).
+
+1. Open the folder where you cloned this repository.
+
+1. Create in the root folder a file called `.env`.
+
+1. Open the file `.env`.
+
+1. Add a single line without spaces pasting the token you copied like this:
+```
+ITALIAJS_BOT_TOKEN=PASTE_HERE_YOUR_TOKEN
+```
+
+## Running your bot
+
+To run your bot for development:
+
+1. Open a terminal.
+
+1. Navigate to the folder where you cloned this repository.
+
+1. Execute `npm run dev`.
+
+## Discord server creation
+
+To create a Discord server follow these steps:
+
+1. Open your Discord client.
+
+1. Click the `+` icon in the bottom left.
+
+1. Click the option *Create My Own*.  
+   ![discord create a server](./img/discord-create-a-server.jpg)
+
+1. Customize your server adding a name and optionally an avatar.  
+   ![discord customize your server](./img/discord-customize-your-server.jpg)
+
+
+
+
