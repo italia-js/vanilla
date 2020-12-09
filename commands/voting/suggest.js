@@ -15,7 +15,7 @@ module.exports = class SuggestCommand extends Commando.Command {
   async run (message, args) {
     if(!args) {
       const cmdError = await message.channel
-        .send('Utilizzo: `jssuggest il mio suggerimento`');
+        .send('Utilizzo: `jssuggest <il mio suggerimento>`');
       await message.delete();
       return await cmdError.delete({timeout: 10000})
     }
