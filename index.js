@@ -41,4 +41,4 @@ client.on('message', (message) => {
 
 client.on('error', console.error);
 
-client.login(process.env.ITALIAJS_BOT_TOKEN);
+client.login(process.env.VANILLA_BOT_TOKEN);
