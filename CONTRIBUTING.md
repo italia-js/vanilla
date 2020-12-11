@@ -4,6 +4,10 @@ Follow this guide if you wish to help with the development of this community pro
 
 ## Purpose
 
+The main goal of this project is to encourage our community members to participate in the development to learn something new, to contribute to the community, or just to getting started with open source.
+
+This bot was kicked off to meet the needs of our community, but we thought on the long run that other communities may benefit from our project as well. We decided then to develop it in a more flexible way.
+
 Any community on Discord could use a little help managing the day to day activities and delivering to its user the best possible experience.
 
 There's a lot of bots available out there, but carelessly adding bots to gather all the features we like might be cumbersome and add too much overhead.
@@ -66,23 +70,43 @@ For local development you need to provide your bot token as follows:
 
 1. Select the application you created.
 
-1. Navigate to the *Bot* section.
+1. Navigate to the _Bot_ section.
 
-1. Click *Copy* underneath *TOKEN*.  
+1. Click _Copy_ underneath _TOKEN_.  
    ![discord bot copy token](./img/discord-bot-copy-token.jpg)
 
 1. Open your IDE or editor of choice (e.g. [Visual Studio Code](https://code.visualstudio.com/)).
 
 1. Open the folder where you cloned this repository.
 
-1. Create in the root folder a file called `.env`.
+1. In the root folder, rename the file called `.env-example` to `.env`.
 
 1. Open the file `.env`.
 
-1. Add a single line without spaces pasting the token you copied like this:
-```
-ITALIAJS_BOT_TOKEN=PASTE_HERE_YOUR_TOKEN
-```
+1. Paste the token you copied on `PASTE_HERE_YOUR_TOKEN`, be careful to leave **no blank spaces**.
+
+## Getting your user ID
+
+1. Open Discord client.
+
+1. Click on the ⚙️ icon in the bottom left.  
+   ![discord app cog icon](./img/discord-app-cog-icon.jpg)
+
+1. Click on _Appearance_, then scroll down and enable _Developer Mode_.  
+   ![discord app developer mode](./img/discord-app-developer-mode.jpg)
+
+1. Go to any server you joined and find your avatar on the user list on the right.
+
+1. Right click on your avatar, then click _Copy ID_ to copy your user ID.  
+   ![discord app user id](./img/discord-app-user-id.jpg)
+
+1. Open your IDE or editor of choice.
+
+1. Open the folder where you cloned this repository.
+
+1. Open the file `.env`.
+
+1. Paste the user ID you copied on `PASTE_HERE_YOUR_OWNER_ID`, be careful to leave **no blank spaces**.
 
 ## Discord server creation
 
@@ -92,7 +116,7 @@ You need a Discord server to test your bot. To create one follow these steps:
 
 1. Click the `+` icon in the bottom left.
 
-1. Click the option *Create My Own*.  
+1. Click the option _Create My Own_.  
    ![discord create a server](./img/discord-create-a-server.jpg)
 
 1. Customize your server adding a name and optionally an icon.  
@@ -110,9 +134,9 @@ Here's a walkthrough:
 
 1. Select the application you created.
 
-1. Navigate to the section *General Information*.
+1. Navigate to the section _General Information_.
 
-1. Click *Copy* underneath *CLIENT ID*.
+1. Click _Copy_ underneath _CLIENT ID_.
 
 1. Navigate to [Discord Permissions Calculator](https://discordapi.com/permissions.html#388208), to facilitate this link has already been set with the correct permissions for this project.  
    ![discord bot permissions](./img/discord-bot-permissions.jpg)
@@ -123,17 +147,16 @@ Here's a walkthrough:
 
 1. In the new page you'll be prompted to login to Discord.
 
-1. Select via dropdown the server you want to add your bot to and click *Continue*.  
+1. Select via dropdown the server you want to add your bot to and click _Continue_.  
    ![discord bot add to server](./img/discord-bot-add-to-server.jpg)
 
-1. You'll see a summary of the permissions, click *Authorize*.  
+1. You'll see a summary of the permissions, click _Authorize_.  
    ![discord bot authorize](./img/discord-bot-authorize.jpg)
 
 1. Complete the reCaptcha to proceed.
 
 1. You'll be shown a success message.  
    ![discord bot authorize success](./img/discord-bot-authorize-success.jpg)
-
 
 Checking your server on Discord client your bot appears now as an offline user.
 
@@ -152,14 +175,3 @@ To bring your bot online for development:
 Your bot appears now as an online user and you can interact with it.
 
 Congratulations!
-
-
-
-
-
-
-
-
-
-
-

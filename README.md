@@ -1,6 +1,6 @@
 # Vanilla
 
-Vanilla is a bot created with [Node.js](https://nodejs.org/) and [Discord.js](https://discord.js.org/) for [Italia JS](https://italia.js.org) by members of its community.
+Vanilla is a bot created with [Node.js](https://nodejs.org/) and [Discord.js](https://discord.js.org/) for [Italia JS](https://italia-js.org) by members of its community.
 
 It's an [open source](https://en.wikipedia.org/wiki/Open_source) project, everybody is welcome to suggest new features or improve existing ones.
 
