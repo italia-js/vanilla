@@ -4,8 +4,12 @@
   "description": "Discord bot di Italia JS",
   "main": "index.js",
   "repository": "git@github.com:italia-js/vanilla.git",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --fix",
     "start": "node .",
     "dev": "nodemon ."
   },
