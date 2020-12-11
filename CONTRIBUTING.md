@@ -17,18 +17,22 @@ To contribute to the code you'll need to:
 - Setup your local machine
 - Create for free a Discord developer account
 - Get a token for your development bot
+- Create a Discord server, for testing purposes
+- Invite the bot to your server
 
 All of this will be explained step-by-step.
 
-### Local machine setup
+## Local machine setup
 
 If you made this far you most likely know the drill:
 
 1. Install the latest [Node.js](https://nodejs.org/en/) LTS (using [nvm](https://github.com/nvm-sh/nvm) or similar library is highly recommended).
+
 1. Clone this repository
+
 1. Execute `npm install`
 
-### Discord developer account (free)
+## Discord developer account (free)
 
 Here's a walkthrough to get up and running with Discord:
 
@@ -51,3 +55,111 @@ Here's a walkthrough to get up and running with Discord:
    ![discord app bot overview](./img/discord-app-bot-overview.jpg)
 
 For further information please refer to the [official Discord documentation](https://discord.com/developers/docs/intro).
+
+## Getting your bot token
+
+For local development you need to provide your bot token as follows:
+
+1. Open your browser.
+
+1. Navigate to your dashboard on [Discord Developer Portal](https://discord.com/developers/applications/).
+
+1. Select the application you created.
+
+1. Navigate to the *Bot* section.
+
+1. Click *Copy* underneath *TOKEN*.  
+   ![discord bot copy token](./img/discord-bot-copy-token.jpg)
+
+1. Open your IDE or editor of choice (e.g. [Visual Studio Code](https://code.visualstudio.com/)).
+
+1. Open the folder where you cloned this repository.
+
+1. Create in the root folder a file called `.env`.
+
+1. Open the file `.env`.
+
+1. Add a single line without spaces pasting the token you copied like this:
+```
+ITALIAJS_BOT_TOKEN=PASTE_HERE_YOUR_TOKEN
+```
+
+## Discord server creation
+
+You need a Discord server to test your bot. To create one follow these steps:
+
+1. Open your Discord client.
+
+1. Click the `+` icon in the bottom left.
+
+1. Click the option *Create My Own*.  
+   ![discord create a server](./img/discord-create-a-server.jpg)
+
+1. Customize your server adding a name and optionally an icon.  
+   ![discord customize your server](./img/discord-customize-your-server.jpg)
+
+## Bot invitation
+
+A Discord bot is like a special user that needs to be invited to your server with a specific set of permissions, depending on the bot functionalities.
+
+Here's a walkthrough:
+
+1. Open your browser.
+
+1. Navigate to your dashboard on [Discord Developer Portal](https://discord.com/developers/applications/).
+
+1. Select the application you created.
+
+1. Navigate to the section *General Information*.
+
+1. Click *Copy* underneath *CLIENT ID*.
+
+1. Navigate to [Discord Permissions Calculator](https://discordapi.com/permissions.html#388208), to facilitate this link has already been set with the correct permissions for this project.  
+   ![discord bot permissions](./img/discord-bot-permissions.jpg)
+
+1. Paste the Client ID you copied in the proper field.
+
+1. Click the link.
+
+1. In the new page you'll be prompted to login to Discord.
+
+1. Select via dropdown the server you want to add your bot to and click *Continue*.  
+   ![discord bot add to server](./img/discord-bot-add-to-server.jpg)
+
+1. You'll see a summary of the permissions, click *Authorize*.  
+   ![discord bot authorize](./img/discord-bot-authorize.jpg)
+
+1. Complete the reCaptcha to proceed.
+
+1. You'll be shown a success message.  
+   ![discord bot authorize success](./img/discord-bot-authorize-success.jpg)
+
+
+Checking your server on Discord client your bot appears now as an offline user.
+
+It's time to bring your bot online.
+
+## Bringing your bot online
+
+To bring your bot online for development:
+
+1. Open a terminal.
+
+1. Navigate to the folder where you cloned this repository.
+
+1. Execute `npm run dev`.
+
+Your bot appears now as an online user and you can interact with it.
+
+Congratulations!
+
+
+
+
+
+
+
+
+
+
+
