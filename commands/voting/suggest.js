@@ -14,6 +14,13 @@ module.exports = class SuggestCommand extends Commando.Command {
   }
 
   async run (message, args) {
+
+    if(message.channel.type === 'dm') {
+      message.channel
+        .send(`Questo comando non è utilizzabile nei messaggi diretti`);
+        return
+    }
+
     if(message.channel.name !== suggestionChannel) {
       const channelId = message.guild.channels.cache.find(channel => channel.name === suggestionChannel);
       message.channel
