@@ -17,6 +17,12 @@ module.exports = class SuggestionStatusCommand extends Commando.Command {
   async run (message, args) {
     if(!args) return;
 
+    if(message.channel.type === 'dm') {
+      message.channel
+        .send(`Questo comando non è utilizzabile nei messaggi diretti`);
+        return
+    }
+
     let statusMessage = '';
     let statusColor = '';
     const targetMessage = await message.channel.messages.fetch(args[0]);
