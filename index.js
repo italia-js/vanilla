@@ -22,7 +22,8 @@ client.once('ready', () => {
     .registerGroups([
       ['info', 'commands providing informations'],
       ['giveaways', 'commands providing giveaway functions'],
-      ['voting', 'commands for polls, starboards etc']
+      ['voting', 'commands for polls, starboards etc'],
+      ['reminder', 'reminds messages in a specific time for user itself, other users or channels']
     ])
     .registerCommandsIn(path.join(__dirname, 'commands'));
 });
