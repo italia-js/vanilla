@@ -16,10 +16,16 @@ module.exports = class RemindeCommand extends Commando.Command {
   }
 
   async run(message, args) {
+    
+    if(message.channel.type !== 'dm') {
+      await message.delete();
+      message.author.send('Il comando jsremindme è utilizzabile solo nei messaggi diretti');
+      return;
+    }
+
+    const [what, whenQuantity, whenMeasureUnit] = args; 
         
-    let [what, whenQuantity, whenMeasureUnit] = args; 
-        
-    let iWhenQuantity = parseInt(whenQuantity);
+    const iWhenQuantity = parseInt(whenQuantity);
         
     if(Number.isNaN(iWhenQuantity)){
       message.reply(`L'input temporale non è corretto! utilizza un numero seguito da un unità di misura (es: 10 minuti, 30 secondi)`);      
