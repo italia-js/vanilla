@@ -1,0 +1,13 @@
+on:
+  push:
+    branches:
+      - main
+
+name: Build Main
+concurrency: main
+
+jobs:
+  build:
+    uses: ./.github/workflows/node.js.yml
+    with:
+      namespace: main
