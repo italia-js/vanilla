@@ -13,12 +13,9 @@ on:
         required: false
         default: false
         type: boolean
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
+
   build:
 
     runs-on: ubuntu-latest

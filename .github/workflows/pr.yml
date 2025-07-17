@@ -22,4 +22,5 @@ jobs:
     uses: ./.github/workflows/node.js.yml
     with:
       namespace: "pr"
+      run_build: true
 
