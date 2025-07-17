@@ -8,7 +8,7 @@ module.exports = class InfoCommand extends Commando.Command {
       group: 'info',
       memberName: 'info',
       description: 'Restituisce delle informazioni su questo bot'
-    })
+    });
   }
 
   async run (message) {
@@ -23,9 +23,9 @@ module.exports = class InfoCommand extends Commando.Command {
       Sviluppare comandi per Vanilla è divertente e può essere un modo per avvicinarsi all'open source.
 
       Aspetto i tuoi contributi! 🦾
-      `)
+      `);
 
     message.channel.send(embed);
-    console.log()
+    console.log();
   }
-}
+};

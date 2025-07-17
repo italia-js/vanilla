@@ -37,7 +37,7 @@ client.on('message', (message) => {
       message.delete();
     }
   }
-})
+});
 
 client.on('error', console.error);
 

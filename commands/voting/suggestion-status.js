@@ -11,7 +11,7 @@ module.exports = class SuggestionStatusCommand extends Commando.Command {
       argsType: 'multiple',
       description: 'Cambia lo stato ad un suggerimento',
       userPermissions: ['ADMINISTRATOR']
-    })
+    });
   }
 
   async run (message, args) {
@@ -19,8 +19,8 @@ module.exports = class SuggestionStatusCommand extends Commando.Command {
 
     if(message.channel.type === 'dm') {
       message.channel
-        .send(`Questo comando non è utilizzabile nei messaggi diretti`);
-        return
+        .send('Questo comando non è utilizzabile nei messaggi diretti');
+      return;
     }
 
     let statusMessage = '';
@@ -41,17 +41,17 @@ module.exports = class SuggestionStatusCommand extends Commando.Command {
       const cmdError = await message.channel
         .send('Utilizzo: `jssuggeststatus <ID messaggio> <stato> <motivazione>`');
       await message.delete();
-      return await cmdError.delete({timeout: 10000})
+      return await cmdError.delete({timeout: 10000});
     }
 
     const embed = new MessageEmbed()
       .setColor(statusColor)
       .setAuthor(embedContent.author.name, embedContent.author.iconURL)
       .setDescription(embedContent.description)
-      .setFooter(statusMessage)
+      .setFooter(statusMessage);
 
-    message.delete()
+    message.delete();
 
     targetMessage.edit(embed);
   }
-}
+};

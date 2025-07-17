@@ -7,10 +7,10 @@ module.exports = class HelpCommand extends Commando.Command {
       group: 'info',
       memberName: 'help',
       description: 'Restituisce la lista dei comandi disponibili'
-    })
+    });
   }
   async run(message) {
     message.channel.send('pls send help!!!');
     message.react('😱');
   }
-}
+};

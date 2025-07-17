@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const Commando = require('discord.js-commando');
-const addMilliseconds = require('date-fns/addMilliseconds')
+const addMilliseconds = require('date-fns/addMilliseconds');
 
 module.exports = class StartGiveawayCommand extends Commando.Command {
   constructor(client) {
@@ -11,12 +11,12 @@ module.exports = class StartGiveawayCommand extends Commando.Command {
       aliases: ['ga'],
       description: 'Fa partire l\'estrazione di un premio',
       userPermissions: ['ADMINISTRATOR']
-    })
+    });
   }
   async run(message, args) {
     if(isNaN(args) || !args) {
       message.reply('Devi passare un numero come parametro es. `jsga 1`');
-      return
+      return;
     }
     message.delete();
     const time = args * 60000;
@@ -43,14 +43,14 @@ module.exports = class StartGiveawayCommand extends Commando.Command {
 
         msg.edit(giveawayEnded);
 
-      }, time)
-    }
+      }, time);
+    };
 
     const embedColor = '#ffe000';
     const embedTitle = 'Jetbrains giveaway';
     const embedURL = 'https://www.jetbrains.com/store/redeem/';
     const embedThumbnail = 'https://italiajs-media.firebaseapp.com/images/jetbrains.png';
-    const embedDescription = `**Free Personal Subscription \n100% DISCOUNT CODE** \n\nAppCode, CLion, DataGrip, GoLand, IntelliJ IDEA Ultimate, PhpStorm, PyCharm, ReSharper, ReSharper C++, Rider, RubyMine, WebStorm, o dotUltimate \n\n\n`;
+    const embedDescription = '**Free Personal Subscription \n100% DISCOUNT CODE** \n\nAppCode, CLion, DataGrip, GoLand, IntelliJ IDEA Ultimate, PhpStorm, PyCharm, ReSharper, ReSharper C++, Rider, RubyMine, WebStorm, o dotUltimate \n\n\n';
     const cta = `👇 clicca per partecipare all'estrazione. **(termina alle ${endingTime})**`;
     const ended = '**🛑 Il giveaway è terminato!** 🛑';
 
@@ -72,4 +72,4 @@ module.exports = class StartGiveawayCommand extends Commando.Command {
     await msg.react('🎁');
     endGiveaway(msg);
   }
-}
+};
