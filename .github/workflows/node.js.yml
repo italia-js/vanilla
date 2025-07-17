@@ -9,6 +9,10 @@ on:
       namespace:
         required: true
         type: string
+      run_build:
+        required: false
+        default: false
+        type: boolean
   push:
     branches: [ main ]
   pull_request:
