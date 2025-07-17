@@ -134,7 +134,7 @@ Here's a walkthrough:
 
 1. Select the application you created.
 
-1. Navigate to the section _General Information_.
+1. Navigate to the section _OAuth2_.
 
 1. Click _Copy_ underneath _CLIENT ID_.
 
