@@ -1,57 +1,90 @@
-const { MessageEmbed } = require('discord.js');
-const Commando = require('discord.js-commando');
+const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 
-module.exports = class SuggestionStatusCommand extends Commando.Command {
-  constructor(client) {
-    super(client, {
-      name: 'suggeststatus',
-      group: 'voting',
-      memberName: 'suggeststatus',
-      aliases: ['plzstatus'],
-      argsType: 'multiple',
-      description: 'Cambia lo stato ad un suggerimento',
-      userPermissions: ['ADMINISTRATOR']
-    })
-  }
+module.exports = {
+  data: new SlashCommandBuilder()
+    .setName('suggeststatus')
+    .setDescription('Cambia lo stato ad un suggerimento')
+    .addStringOption(option =>
+      option.setName('messageid')
+        .setDescription('ID del messaggio del suggerimento')
+        .setRequired(true))
+    .addStringOption(option =>
+      option.setName('stato')
+        .setDescription('Nuovo stato del suggerimento')
+        .setRequired(true)
+        .addChoices(
+          { name: 'Approvato', value: 'ok' },
+          { name: 'Rifiutato', value: 'ko' }
+        ))
+    .addStringOption(option =>
+      option.setName('motivazione')
+        .setDescription('Motivazione (richiesta per il rifiuto)')
+        .setRequired(false))
+    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 
-  async run (message, args) {
-    if(!args) return;
-
-    if(message.channel.type === 'dm') {
-      message.channel
-        .send(`Questo comando non è utilizzabile nei messaggi diretti`);
-        return
+  async execute(interaction) {
+    if (!interaction.guild) {
+      return await interaction.reply({
+        content: 'Questo comando non è utilizzabile nei messaggi diretti',
+        ephemeral: true
+      });
     }
 
+    const messageId = interaction.options.getString('messageid');
+    const newStatus = interaction.options.getString('stato');
+    const reason = interaction.options.getString('motivazione');
+
+    let targetMessage;
+    try {
+      targetMessage = await interaction.channel.messages.fetch(messageId);
+    } catch (error) {
+      return await interaction.reply({
+        content: 'Non riesco a trovare il messaggio. Assicurati di essere nel canale corretto e che l\'ID sia valido.',
+        ephemeral: true
+      });
+    }
+
+    if (!targetMessage.embeds.length) {
+      return await interaction.reply({
+        content: 'Il messaggio selezionato non è un suggerimento valido.',
+        ephemeral: true
+      });
+    }
+
+    const embedContent = targetMessage.embeds[0];
     let statusMessage = '';
     let statusColor = '';
-    const targetMessage = await message.channel.messages.fetch(args[0]);
-    const embedContent = targetMessage.embeds[0];
-    const reasonToReject = args.slice(2).join(' ');
 
-    if(args[1] == 'ok') {
+    if (newStatus === 'ok') {
       statusColor = '#04c404';
       statusMessage = '✅ Stato: approvato (WIP)';
-      targetMessage.reactions.removeAll();
-    } else if (args[1] == 'ko') {
+      await targetMessage.reactions.removeAll();
+    } else if (newStatus === 'ko') {
+      if (!reason) {
+        return await interaction.reply({
+          content: 'Devi specificare una motivazione quando rifiuti un suggerimento.',
+          ephemeral: true
+        });
+      }
       statusColor = '#ff0000';
-      statusMessage = `❌ Stato: rifiutato.\nMotivo: ${reasonToReject}`;
-      targetMessage.reactions.removeAll();
-    } else {
-      const cmdError = await message.channel
-        .send('Utilizzo: `jssuggeststatus <ID messaggio> <stato> <motivazione>`');
-      await message.delete();
-      return await cmdError.delete({timeout: 10000})
+      statusMessage = `❌ Stato: rifiutato.\nMotivo: ${reason}`;
+      await targetMessage.reactions.removeAll();
     }
 
-    const embed = new MessageEmbed()
+    const embed = new EmbedBuilder()
       .setColor(statusColor)
-      .setAuthor(embedContent.author.name, embedContent.author.iconURL)
+      .setAuthor({
+        name: embedContent.author.name,
+        iconURL: embedContent.author.iconURL
+      })
       .setDescription(embedContent.description)
-      .setFooter(statusMessage)
+      .setFooter({ text: statusMessage });
 
-    message.delete()
+    await targetMessage.edit({ embeds: [embed] });
 
-    targetMessage.edit(embed);
+    await interaction.reply({
+      content: 'Stato del suggerimento aggiornato!',
+      ephemeral: true
+    });
   }
-}
+};

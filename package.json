@@ -5,13 +5,14 @@
   "main": "index.js",
   "repository": "git@github.com:italia-js/vanilla.git",
   "engines": {
-    "node": "14.x"
+    "node": ">=22.14.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --fix",
     "start": "node .",
-    "dev": "nodemon ."
+    "dev": "nodemon .",
+    "deploy-commands": "node deploy-commands.js"
   },
   "keywords": [
     "discord",
@@ -20,13 +21,15 @@
   "author": "Maurizio Mangione",
   "license": "MIT",
   "dependencies": {
-    "date-fns": "^2.16.1",
-    "discord.js": "^12.5.1",
-    "discord.js-commando": "github:discordjs/Commando",
-    "dotenv": "^8.2.0"
+    "date-fns": "^4.1.0",
+    "discord.js": "^14.21.0",
+    "dotenv": "^17.2.0"
   },
   "devDependencies": {
-    "eslint": "^7.14.0",
-    "nodemon": "^2.0.6"
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.31.0",
+    "eslint": "^9.31.0",
+    "globals": "^16.3.0",
+    "nodemon": "^3.1.10"
   }
 }

@@ -1,16 +1,11 @@
-const Commando = require('discord.js-commando');
+const { SlashCommandBuilder } = require('discord.js');
 
-module.exports = class HelpCommand extends Commando.Command {
-  constructor(client) {
-    super(client, {
-      name: 'help',
-      group: 'info',
-      memberName: 'help',
-      description: 'Restituisce la lista dei comandi disponibili'
-    })
+module.exports = {
+  data: new SlashCommandBuilder()
+    .setName('help')
+    .setDescription('Restituisce la lista dei comandi disponibili'),
+
+  async execute(interaction) {
+    await interaction.reply('pls send help!!!');
   }
-  async run(message) {
-    message.channel.send('pls send help!!!');
-    message.react('😱');
-  }
-}
+};
