@@ -14,12 +14,10 @@ Looking forward to see your contribution! 💪
 
 <img width="3368" height="4444" alt="image" src="https://github.com/user-attachments/assets/7c303da5-b4a2-45b2-8426-5433c3ee5907" />
 
-## Structure
-
-### npm run deploy-commands
+### Deploy Commands npm run deploy-commands
 `dev/vps -> Discord so discord records the commands`
 
-### user use commands
+### Bot Workflow
 `user -> bot -> discord -> dev/vps -> discord -> user`
 
 ## How to create a new command
