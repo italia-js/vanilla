@@ -10,6 +10,10 @@ Developing commands for Vanilla is a lot of fun, and it can be a good starting p
 
 Looking forward to see your contribution! 💪
 
+# Figma
+
+<img width="3368" height="4444" alt="image" src="https://github.com/user-attachments/assets/58725e89-3ff6-41d2-ac9f-85b995c518f0" />
+
 ## Contributing
 
 If you'd like to help out with the development of this project, please refer to the [contribution guide](./CONTRIBUTING.md).
