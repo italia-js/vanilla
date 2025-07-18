@@ -12,7 +12,7 @@ Looking forward to see your contribution! 💪
 
 # Structure
 
-<img width="3368" height="4444" alt="image" src="https://github.com/user-attachments/assets/7c303da5-b4a2-45b2-8426-5433c3ee5907" />
+<img width="3368" height="4444" alt="image" src="https://github.com/user-attachments/assets/5df866a7-06c9-4594-a0c9-b9921554c674" />
 
 ### Deploy Commands npm run deploy-commands
 `dev/vps -> Discord so discord records the commands`
