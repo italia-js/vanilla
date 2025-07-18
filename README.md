@@ -17,10 +17,10 @@ Looking forward to see your contribution! 💪
 ## Structure
 
 ### npm run deploy-commands
-dev/vps -> Discord so discord records the commands
+`dev/vps -> Discord so discord records the commands`
 
 ### user use commands
-user -> bot -> discord -> dev/vps -> discord -> user
+`user -> bot -> discord -> dev/vps -> discord -> user`
 
 ## How to create a new command
 
@@ -28,7 +28,6 @@ user -> bot -> discord -> dev/vps -> discord -> user
 2. Create a new class that extends the `SlashCommandBuilder` class.
 3. Add the command to the `commands` array in the `index.js` file.
 4. Run the `npm run deploy-commands` command to deploy the command to the Discord server.
-
 
 ## Contributing
 
