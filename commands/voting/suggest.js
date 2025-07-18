@@ -1,48 +1,55 @@
-const { MessageEmbed } = require('discord.js');
-const Commando = require('discord.js-commando');
+const { SlashCommandBuilder, EmbedBuilder, ChannelType } = require('discord.js');
 const { suggestionChannel } = require('../../config.json');
 
-module.exports = class SuggestCommand extends Commando.Command {
-  constructor(client) {
-    super(client, {
-      name: 'suggest',
-      group: 'voting',
-      memberName: 'suggest',
-      aliases: ['plz'],
-      description: 'Pubblica un messaggio con un\'idea o un suggerimento che può essere votato dagli utenti'
-    });
-  }
+module.exports = {
+  data: new SlashCommandBuilder()
+    .setName('suggest')
+    .setDescription('Pubblica un\'idea o un suggerimento che può essere votato dagli utenti')
+    .addStringOption(option =>
+      option.setName('suggerimento')
+        .setDescription('Il tuo suggerimento')
+        .setRequired(true)),
 
-  async run (message, args) {
-
-    if(message.channel.type === 'dm') {
-      message.channel
-        .send('Questo comando non è utilizzabile nei messaggi diretti');
-      return;
+  async execute(interaction) {
+    if (!interaction.guild) {
+      return await interaction.reply({
+        content: 'Questo comando non è utilizzabile nei messaggi diretti',
+        ephemeral: true
+      });
     }
 
-    if(message.channel.name !== suggestionChannel) {
-      const channelId = message.guild.channels.cache.find(channel => channel.name === suggestionChannel);
-      message.channel
-        .send(`Questo comando è utilizzabile solo nel canale ${channelId}`);
-      return;
+    const targetChannel = interaction.guild.channels.cache.find(channel => channel.name === suggestionChannel);
+    if (!targetChannel) {
+      return await interaction.reply({
+        content: 'Non riesco a trovare il canale per i suggerimenti',
+        ephemeral: true
+      });
     }
 
-    if(!args) {
-      const cmdError = await message.channel
-        .send('Utilizzo: `jssuggest <il mio suggerimento>`');
-      await message.delete();
-      return await cmdError.delete({timeout: 10000});
+    if (interaction.channel.id !== targetChannel.id) {
+      return await interaction.reply({
+        content: `Questo comando è utilizzabile solo nel canale ${targetChannel}`,
+        ephemeral: true
+      });
     }
-    const embed = new MessageEmbed()
+
+    const suggestion = interaction.options.getString('suggerimento');
+
+    const embed = new EmbedBuilder()
       .setColor('#ffe000')
-      .setAuthor(message.author.username, message.author.avatarURL())
-      .setDescription(args)
-      .setFooter('💡 Stato: in valutazione');
+      .setAuthor({
+        name: interaction.user.username,
+        iconURL: interaction.user.displayAvatarURL()
+      })
+      .setDescription(suggestion)
+      .setFooter({ text: '💡 Stato: in valutazione' });
 
-    message.delete();
-
-    const msg = await message.channel.send(embed);
+    const msg = await interaction.channel.send({ embeds: [embed] });
     await msg.react('👍');
+
+    await interaction.reply({
+      content: 'Suggerimento pubblicato!',
+      ephemeral: true
+    });
   }
 };
