@@ -11,7 +11,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --fix",
     "start": "node .",
-    "dev": "nodemon ."
+    "dev": "nodemon .",
+    "deploy-commands": "node deploy-commands.js"
   },
   "keywords": [
     "discord",
