@@ -12,19 +12,7 @@ Looking forward to see your contribution! 💪
 
 # Structure
 
-DEPLOY COMMANDS
-update bot commands list
-push update into prod
-deploy-commands.js
-We deploy commands so discord will expect these commands
-BOT WORKFLOW
-Will ask for response
-User ask help
-Will give response
-Will get response
-Ask for how the commands works
-Gives response
-If VPS or local is off i wont give any response
+<img width="3368" height="4444" alt="image" src="https://github.com/user-attachments/assets/7c303da5-b4a2-45b2-8426-5433c3ee5907" />
 
 ## Structure
 
