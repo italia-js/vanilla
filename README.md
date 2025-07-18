@@ -12,7 +12,7 @@ Looking forward to see your contribution! 💪
 
 # Structure
 
-<img width="3368" height="4444" alt="image" src="https://github.com/user-attachments/assets/c6fdbf33-46b0-4be5-839d-109ee8a77035" />
+<img width="3368" height="4444" alt="image" src="https://github.com/user-attachments/assets/7dc7e55b-7474-4832-8f4a-abb4df1e5386" />
 
 ## Structure
 
