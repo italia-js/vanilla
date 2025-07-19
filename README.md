@@ -27,6 +27,16 @@ Looking forward to see your contribution! 💪
 3. Add the command to the `commands` array in the `index.js` file.
 4. Run the `npm run deploy-commands` command to deploy the command to the Discord server.
 
+## How to run the project
+
+1. Run `nvm install` to install the latest LTS version of Node.js.
+2. Run `npm install` to install or refresh the project dependencies.
+3. Create a `.env` file and configure the required environment variables:
+  - `DISCORD_TOKEN`
+  - `GUILD_ID`
+4. Run `npm run dev` to start the bot in development mode.
+5. Join the Discord server and test the available commands.
+
 ## Contributing
 
 If you'd like to help out with the development of this project, please refer to the [contribution guide](./CONTRIBUTING.md).
