@@ -7,7 +7,7 @@ const channelLog = '1396516358879055962';
 
 /**
  *
- * this function send a embeded message in the channel honeypot
+ *  send a embeded message in the channel honeypot
  *
  */
 const embedTheMessage = (message, channel) => {
@@ -24,7 +24,7 @@ const embedTheMessage = (message, channel) => {
 
 /**
  *
- * this function send a embeded message in the channel log
+ * send a embeded message in the channel log
  * we need this to track how sended the message this
  *
  */
