@@ -7,13 +7,13 @@ const channelLog = '1396516358879055962';
 
 // add emoticon for kill streak, and other things, to refactor because
 // it just delete the infomessagehoneypot
-const infoHoneypot = (message, channel) => {
+const infoHoneypot = (message, channel, bannedNumber) => {
   const channelMessage = message.client.channels.cache.get(channel);
 
   const embed = new EmbedBuilder()
     .setColor('#ff0000')
     .setTitle('⚠️ Honeypot Alert - Info ⚠️')
-    .setDescription('Benvenuti nel canale Honeypot! Questo canale è progettato per rilevare e gestire attività sospette. Se qualcuno invia un messaggio qui, verrà automaticamente bannato. Si prega di non inviare messaggi in questo canale a meno che non si desideri essere bannati.')
+    .setDescription(`Benvenuti nel canale Honeypot! Questo canale è progettato per rilevare e gestire attività sospette. Se qualcuno invia un messaggio qui, verrà automaticamente bannato. Si prega di non inviare messaggi in questo canale a meno che non si desideri essere bannati. \nkillstreak: ${bannedNumber}`)
     .setTimestamp();
 
   channelMessage.send({ embeds: [embed] });
@@ -84,11 +84,16 @@ module.exports = {
         // delete the message
         await message.delete();
 
+        // fetch bannati
+        const guild = message.guild;
+        const bannati = await guild.bans.fetch();
+        const bannedNumber = bannati.size;
+
         // clear recent messages and show info
         const honeypotChannel = message.guild.channels.cache.get(channelHoneypot);
 
         await honeypotChannel.bulkDelete(10).then(() => {
-          infoHoneypot(message, channelHoneypot);
+          infoHoneypot(message, channelHoneypot, bannedNumber);
         });
 
       } catch (error) {
