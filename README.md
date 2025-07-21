@@ -29,13 +29,15 @@ Looking forward to see your contribution! 💪
 
 ## How to run the project
 
-1. Run `nvm install` to install the latest LTS version of Node.js.
-2. Run `npm install` to install or refresh the project dependencies.
-3. Create a `.env` file and configure the required environment variables:
+1. First of all run the command `rm -rf node_modules` to remove the `node_modules` folder if it exists. This is done to resolve any potential issues with outdated dependencies.
+   This step is optional but recommended to ensure a clean installation.
+2. Run `nvm use` to switch to the correct Node.js version.
+3. Run `npm i` to install the required dependencies.
+4. Create a `.env` file and configure the required environment variables:
   - `DISCORD_TOKEN`
   - `GUILD_ID`
-4. Run `npm run dev` to start the bot in development mode.
-5. Join the Discord server and test the available commands.
+5. Run `npm run dev` to start the bot in development mode.
+6. Join the Discord server and test the available commands.
 
 ## Contributing
 
