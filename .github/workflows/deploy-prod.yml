@@ -1,0 +1,20 @@
+on:
+  workflow_dispatch:
+    inputs:
+      build_id:
+        description: "The workflow build id to deploy, leave blank for newest"
+        required: false
+        type: string
+
+name: vanilla-prod-deploy
+concurrency: vanilla-prod-deploy
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and deploy Docker image
+        run: |
+          docker build -t vanilla-bot:${{ inputs.build_id }} .
+          docker run -d vanilla-bot:${{ inputs.build_id }}
