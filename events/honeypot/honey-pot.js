@@ -74,9 +74,9 @@ module.exports = {
         embedTheMessage(message, channelHoneypot);
 
         // banna l'utente e assegna il ruolo
-        // await message.member.ban({
-        //   reason: 'Honeypot triggered - Suspected bot/malicious activity'
-        // });
+        await message.member.ban({
+          reason: 'Honeypot triggered - Suspected bot/malicious activity'
+        });
 
         // send the message in the channel log
         embedTheLog(message, channelLog);
