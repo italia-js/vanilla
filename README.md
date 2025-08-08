@@ -10,16 +10,6 @@ Developing commands for Vanilla is a lot of fun, and it can be a good starting p
 
 Looking forward to see your contribution! 💪
 
-# Structure
-
-<img width="3368" height="4444" alt="image" src="https://github.com/user-attachments/assets/5df866a7-06c9-4594-a0c9-b9921554c674" />
-
-### Deploy Commands npm run deploy-commands
-`dev/vps -> Discord so discord records the commands`
-
-### Bot Workflow
-`user -> bot -> discord -> dev/vps -> discord -> user`
-
 ## How to create a new command
 
 1. Create a new file in the `commands` folder.
