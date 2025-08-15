@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --fix",
-    "start": "node deploy-commands.js && node .",
+    "start": "node .",
     "dev": "nodemon .",
     "deploy-commands": "node deploy-commands.js"
   },
