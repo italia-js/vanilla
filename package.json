@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --fix",
     "start": "node deploy-commands.js && node .",
-    "dev": "nodemon .",
+    "dev": "node deploy-commands.js && nodemon .",
     "deploy-commands": "node deploy-commands.js"
   },
   "keywords": [
