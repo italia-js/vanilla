@@ -39,7 +39,6 @@ function buildNewsApiUrl(query) {
 
 const filterAds = (article) =>
   article.author !== 'Pubblicità' &&
-  article.author !== 'Pubblicita' &&
   article.author !== 'Advertisement';
 
 const filterGuides = (article) =>
@@ -177,7 +176,7 @@ async function processNewsArticle() {
   console.log('Fetching URL:', url.toString());
 
   const response = await fetch(url.toString());
-  
+
   console.log('Response status:', response.status);
   console.log('Response headers:', response.headers);
 
