@@ -105,7 +105,7 @@ Titolo: ${article.title}
 Descrizione: ${article.description}
 ${webContent ? `Contenuto articolo: ${webContent}` : ''}
 
-Genera SOLO un commento diretto e conciso (1-2 righe massimo) come se FOSSI COINVOLTO personalmente. Usa "io", "mi", "a me" per essere personale. NON FARE DOMANDE. Racconta come ti impatta. USA GRAMMATICA ITALIANA CORRETTA SEMPRE.`;
+Genera SOLO un commento di massimo 150 caratteri. Usa la prima persona ("io", "mi", "a me"). NON FARE DOMANDE. Scrivi una osservazione tecnica diretta. USA GRAMMATICA ITALIANA CORRETTA.`;
 
     const response = await fetch(config.MISTRAL_API_BASE_URL, {
       method: 'POST',
