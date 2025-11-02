@@ -37,8 +37,9 @@ module.exports = {
     let targetMessage;
     try {
       targetMessage = await interaction.channel.messages.fetch(messageId);
-    } catch (error) {
+    } catch (e) {
       return await interaction.reply({
+        error: e,
         content: 'Non riesco a trovare il messaggio. Assicurati di essere nel canale corretto e che l\'ID sia valido.',
         ephemeral: true
       });
