@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
+const config = require('../../config/constants');
 const aiShared = require('../../shared/ai-shared');
 
 module.exports = {
@@ -8,6 +9,12 @@ module.exports = {
 
 
   async execute(interaction) {
+
+    if (!config.AI_BOT_ENABLED) {
+      await interaction.reply('Comando AI non disponibile.');
+      return;
+    }
+
     try {
       console.log('Generating commands for Vanilla...');
       await interaction.deferReply();

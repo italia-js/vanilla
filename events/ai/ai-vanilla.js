@@ -7,6 +7,11 @@ module.exports = {
   async execute(client) {
     console.log(`AI News Bot attivo come ${client.user.tag}`);
 
+    if (!config.AI_BOT_ENABLED) {
+      console.log('AI Bot feature is disabled. Set AI_BOT_ENABLED=true to enable.');
+      return;
+    }
+
     // for production use this below is from
     const CHANNEL_NAME = config.CHANNEL_NAME ;
     const INTERVAL_MINUTES = config.INTERVAL_MINUTES;
