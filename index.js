@@ -16,6 +16,28 @@ const client = new Client({
 
 client.commands = new Collection();
 
+// load events
+const eventsPath = path.join(__dirname, 'events');
+const eventFolders = fs.readdirSync(eventsPath);
+
+for (const folder of eventFolders) {
+  console.log(`Loading events from ${folder}`);
+  const eventPath = path.join(eventsPath, folder);
+  const eventFiles = fs.readdirSync(eventPath);
+
+  for (const file of eventFiles) {
+    console.log(`Loading event ${file}`);
+    const filePath = path.join(eventPath, file);
+    const event = require(filePath);
+    if (event.once) {
+      client.once(event.name, (...args) => event.execute(...args, client));
+    } else {
+      client.on(event.name, (...args) => event.execute(...args, client));
+    }
+  }
+}
+
+// load commands
 const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
 
