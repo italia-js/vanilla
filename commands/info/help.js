@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -6,6 +6,16 @@ module.exports = {
     .setDescription('Restituisce la lista dei comandi disponibili'),
 
   async execute(interaction) {
-    await interaction.reply('pls send help!!!');
+    let description = '';
+    for (const command of interaction.client.commands.values()) {
+      description += `**${command.data.name}**: ${command.data.description}\n`;
+    }
+
+    const embeddedBuilder = new EmbedBuilder()
+      .setColor('#ffe000')
+      .setTitle('Comandi disponibili')
+      .setDescription(description);
+
+    await interaction.reply({ embeds: [embeddedBuilder] });
   }
 };
