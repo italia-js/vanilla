@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, ChannelType } = require('discord.js');
+const { SlashCommandBuilder, ChannelType, PermissionFlagsBits } = require('discord.js');
 const mistralHelper = require('../../shared/mistral-helper-threads');
 const constants = require('../../config/constants');
 
@@ -6,6 +6,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('divine-light-this')
     .setDescription('Sposta un messaggio in un forum post con titolo generato automaticamente')
+    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
     .addStringOption(option =>
       option.setName('message_id')
         .setDescription('ID del messaggio da spostare nel forum')

@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
 const mistralHelper = require('../../shared/mistral-helper-threads');
 const constants = require('../../config/constants');
 
@@ -6,6 +6,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('thread-this')
     .setDescription('Crea un thread dal messaggio specificato')
+    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
     .addStringOption(option =>
       option.setName('message_id')
         .setDescription('ID del messaggio per cui creare il thread')
