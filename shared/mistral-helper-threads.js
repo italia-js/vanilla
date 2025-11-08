@@ -7,6 +7,9 @@ class MistralService {
     this.baseUrl = constants.MISTRAL_THREAD_API_BASE_URL;
   }
 
+  /**
+	 * This method generates a title for a given message content.
+	 */
   async generateTitle(messageContent) {
     if (!this.apiKey) {
       console.warn('MISTRAL_TOKEN not found, using fallback title generation');
@@ -34,14 +37,15 @@ class MistralService {
     }
   }
 
+  /**
+	 * Using regex to clean the text
+	 */
   cleanTitle(text) {
     return text
       .split('\n')[0]
       .trim()
-      .replace(/^["'`„""''«»]+|["'`„""''«»]+$/g, '')
-      .replace(/^["'`„""''«»]+|["'`„""''«»]+$/g, '')
+      .replace(/([^a-z0-9 ._-]+)/gi, '')
       .replace(/\.$/, '')
-      .replace(/[*_`~#]/g, '')
       .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
       .replace(/!\[([^\]]*)\]\([^)]+\)/g, '$1')
       .substring(0, constants.AUTOTHREADS_TITLE_MAX_LENGTH);
