@@ -44,7 +44,7 @@ module.exports = {
       });
 
       await interaction.reply({
-        content: `✨ Messaggio spostato con successo nel forum!\n**Titolo:** "${threadTitle}"\n**Post:** ${forumPost.url}`,
+        content: `Messaggio spostato con successo nel forum!\n**Titolo:** "${threadTitle}"\n**Post:** ${forumPost.url}`,
         flags: 64
       });
 
