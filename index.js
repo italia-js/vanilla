@@ -57,7 +57,7 @@ for (const folder of commandFolders) {
   }
 }
 
-client.once('ready', () => {
+client.once('clientReady', () => {
   console.log(`${client.user.username} has logged in`);
 
   client.user.setPresence({
