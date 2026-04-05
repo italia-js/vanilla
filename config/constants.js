@@ -27,4 +27,14 @@ module.exports = {
 
   // Feature Flags
   AI_BOT_ENABLED: process.env.AI_BOT_ENABLED === 'true',
+
+  // Gemini AI Configuration (for TLDR feature)
+  GEMINI_API_BASE_URL: 'https://generativelanguage.googleapis.com/v1beta/models',
+  GEMINI_MODEL: 'gemini-2.0-flash',
+
+  // TLDR Feature
+  TLDR_MAX_TOKENS: 400,
+  TLDR_TEMPERATURE: 0.8,
+  TLDR_COOLDOWN_MS: 60_000,
+  TLDR_BUTTON_LABEL: 'Genera TLDR',
 };
