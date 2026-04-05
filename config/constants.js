@@ -28,9 +28,9 @@ module.exports = {
   // Feature Flags
   AI_BOT_ENABLED: process.env.AI_BOT_ENABLED === 'true',
 
-  // Gemini AI Configuration (for TLDR feature)
-  GEMINI_API_BASE_URL: 'https://generativelanguage.googleapis.com/v1beta/models',
-  GEMINI_MODEL: 'gemini-2.0-flash',
+  // Groq AI Configuration (for TLDR feature)
+  GROQ_API_BASE_URL: 'https://api.groq.com/openai/v1/chat/completions',
+  GROQ_MODEL: 'llama-3.3-70b-versatile',
 
   // TLDR Feature
   TLDR_MAX_TOKENS: 400,

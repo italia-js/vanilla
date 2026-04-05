@@ -61,7 +61,7 @@ function isArticleUrl(rawUrl) {
 async function generateTldr(url, webContent) {
   const prompt = `Sei un developer senior che riassume articoli tecnici per colleghi. \
 Scrivi in italiano informale, diretto, senza fronzoli. \
-Non sembrare un'AI: usa un linguaggio naturale, come se spiegassi a voce a un collega. \
+Non sembrare un'AI: usa un linguaggio naturale, come se spiegassi a voce a un collega. Non usare frasi come "sembra che", "pare che", "sembrerebbe". \
 Struttura: una riga di contesto (solo se aggiunge davvero qualcosa), poi massimo 3 bullet point con • che vanno dritti al punto tecnico, poi una riga finale solo se c'è qualcosa di rilevante da aggiungere. \
 Niente intro generiche, niente "questo articolo parla di", niente conclusioni ovvie. \
 Se il contenuto è scarso o non tecnico, dillo chiaramente in una riga sola.
@@ -70,24 +70,27 @@ URL: ${url}
 Contenuto: ${webContent}`;
 
   try {
-    const endpoint = `${config.GEMINI_API_BASE_URL}/${config.GEMINI_MODEL}:generateContent?key=${process.env.GEMINI_API_KEY}`;
-
-    const response = await fetch(endpoint, {
+    const response = await fetch(config.GROQ_API_BASE_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
+      },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: {
-          maxOutputTokens: config.TLDR_MAX_TOKENS,
-          temperature: config.TLDR_TEMPERATURE,
-        },
+        model: config.GROQ_MODEL,
+        messages: [{ role: 'user', content: prompt }],
+        max_tokens: config.TLDR_MAX_TOKENS,
+        temperature: config.TLDR_TEMPERATURE,
       }),
     });
 
-    if (!response.ok) throw new Error(`Gemini API error: ${response.status}`);
+    if (!response.ok) {
+      const errorBody = await response.text();
+      throw new Error(`Groq API error: ${response.status} — ${errorBody}`);
+    }
 
     const data = await response.json();
-    return data.candidates?.[0]?.content?.parts?.[0]?.text ?? fallbackTldr();
+    return data.choices?.[0]?.message?.content ?? fallbackTldr();
   } catch (error) {
     console.error('Errore nella Gemini API:', error);
     return fallbackTldr();
@@ -117,7 +120,6 @@ function createTldrEmbed(url, tldrText) {
     description: tldrText,
     url,
     color: 0x5865f2,
-    footer: { text: 'Generato da Gemini AI' },
   };
 }
 
