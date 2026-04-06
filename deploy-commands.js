@@ -39,7 +39,9 @@ const rest = new REST().setToken(process.env.VANILLA_BOT_TOKEN);
      * https://discordjs.guide/creating-your-bot/command-deployment.html#guild-commands
      */
     const data = await rest.put(
-      Routes.applicationCommands(process.env.CLIENT_ID),
+      process.env.GUILD_ID
+        ? Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID)
+        : Routes.applicationCommands(process.env.CLIENT_ID),
       { body: commands },
     );
 

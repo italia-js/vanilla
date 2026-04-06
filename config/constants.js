@@ -19,6 +19,8 @@ module.exports = {
   ARTICLE_DESCRIPTION_MAX_LENGTH: 200,
 
   // Discord Configuration
+  EMBED_COLOR: '#ffe000',
+  GITHUB_REPO: 'italia-js/vanilla',
   CHANNEL_NAME: '782921551225028624',
   CHANNEL_NAME_TEST: '1395516330563735625',
 
