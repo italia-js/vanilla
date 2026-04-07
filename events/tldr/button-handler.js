@@ -28,7 +28,10 @@ module.exports = {
     await interaction.deferReply();
 
     try {
-      const originalMessage = await interaction.channel.messages.fetch(messageId);
+      const parentChannel = interaction.channel.isThread()
+        ? interaction.channel.parent
+        : interaction.channel;
+      const originalMessage = await parentChannel.messages.fetch(messageId);
       const url = extractArticleUrl(originalMessage.content);
 
       if (!url) {
@@ -44,7 +47,9 @@ module.exports = {
 
       const tldrText = await generateTldr(url, webContent);
       await interaction.editReply({ embeds: [createTldrEmbed(url, tldrText)] });
-      await interaction.message.edit({ components: [] });
+      await interaction.message.delete().catch(err => {
+        console.warn('Impossibile eliminare il messaggio del bottone TLDR:', err.message);
+      });
     } catch (error) {
       console.error('Errore nel button handler TLDR:', error);
       await interaction.editReply('Errore durante la generazione del TLDR.').catch(() => {});
