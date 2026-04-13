@@ -27,6 +27,26 @@ module.exports = {
   // Web scraping
   USER_AGENT: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
 
+  // AutoThreads Configuration
+  AUTOTHREADS_KEYWORD: process.env.AUTOTHREADS_KEYWORD || '[threads]',
+  AUTOTHREADS_MIN_MESSAGE_LENGTH: 10,
+  AUTOTHREADS_AUTO_ARCHIVE_DURATION: 1440, // 24 hours
+  AUTOTHREADS_TITLE_MAX_LENGTH: 100,
+
+  // Mistral Thread Helper Configuration
+  MISTRAL_THREAD_API_BASE_URL: 'https://api.mistral.ai/v1/chat/completions',
+  MISTRAL_THREAD_MODEL: 'mistral-medium',
+  MISTRAL_THREAD_TEMPERATURE: 0.3,
+  MISTRAL_THREAD_MAX_TOKENS: 100,
+  MISTRAL_THREAD_HOSTNAME: 'api.mistral.ai',
+  MISTRAL_THREAD_PORT: 443,
+  MISTRAL_THREAD_PATH: '/v1/chat/completions',
+  
+  // Fallback Title Configuration
+  FALLBACK_TITLE_WORDS_COUNT: 8,
+  FALLBACK_TITLE_MAX_LENGTH: 50,
+  FALLBACK_TITLE_ELLIPSIS_OFFSET: 3,
+
   // Feature Flags
   AI_BOT_ENABLED: process.env.AI_BOT_ENABLED === 'true',
 
